@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.planetgeekz.socialmedianotificationlistener.R;
@@ -31,12 +32,15 @@ public class MainActivity extends Activity{
 	
     private SpheroConnectionView mSpheroConnectionView;
     
+    private TextView mSpheroState;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.main);
+		
+		mSpheroState=(TextView)findViewById(R.id.sphero_state);
 
 		 mSpheroConnectionView = (SpheroConnectionView) findViewById(R.id.sphero_connection_view);
 	        mSpheroConnectionView.addConnectionListener(new ConnectionListener() {
@@ -45,6 +49,9 @@ public class MainActivity extends Activity{
 	            public void onConnected(Robot robot) {
 	                Log.i(TAG, "Connection Successful " + robot);
 	                mRobot=(Sphero) robot;
+	                
+	                mSpheroState.setText("Sphero Notifier Active");
+	                
 	                main=MainActivity.this;
 	                
 	            }
