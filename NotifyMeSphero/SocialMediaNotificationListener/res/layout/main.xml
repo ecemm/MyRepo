@@ -17,7 +17,7 @@
 
        <orbotix.view.connection.SpheroConnectionView
             android:id="@+id/sphero_connection_view"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="#D0000000"/>
 </RelativeLayout>

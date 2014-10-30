@@ -6,6 +6,7 @@ import orbotix.robot.base.Robot;
 import orbotix.robot.base.RobotProvider;
 import orbotix.sphero.ConnectionListener;
 import orbotix.sphero.DiscoveryListener;
+import orbotix.sphero.PersistentOptionFlags;
 import orbotix.sphero.Sphero;
 import orbotix.view.connection.SpheroConnectionView;
 import android.app.Activity;
@@ -43,13 +44,15 @@ public class MainActivity extends Activity{
 		mSpheroState=(TextView)findViewById(R.id.sphero_state);
 
 		 mSpheroConnectionView = (SpheroConnectionView) findViewById(R.id.sphero_connection_view);
-	        mSpheroConnectionView.addConnectionListener(new ConnectionListener() {
+	     mSpheroConnectionView.addConnectionListener(new ConnectionListener() {
 
 	            @Override
 	            public void onConnected(Robot robot) {
 	                Log.i(TAG, "Connection Successful " + robot);
 	                mRobot=(Sphero) robot;
 	                
+	                
+	                mRobot.getConfiguration().setPersistentFlag(PersistentOptionFlags.PreventSleepInCharger, true);
 	                mSpheroState.setText("Sphero Notifier Active");
 	                
 	                main=MainActivity.this;
@@ -105,21 +108,15 @@ public class MainActivity extends Activity{
 	
 	@Override
 	protected void onDestroy() {
-	 super.onDestroy();
-      RobotProvider.getDefaultProvider().disconnectControlledRobots();
-     
-      unregisterReceiver(mReceiver);
+		super.onDestroy();
+		mRobot.getConfiguration().setPersistentFlag(
+				PersistentOptionFlags.PreventSleepInCharger, false);
+		RobotProvider.getDefaultProvider().disconnectControlledRobots();
+
+		unregisterReceiver(mReceiver);
 	}
 	
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-	
-	
     
 	public class SMReceiver extends BroadcastReceiver {
 
@@ -148,6 +145,9 @@ public class MainActivity extends Activity{
 					}
 
 					else {
+						
+						
+						
 
 						String notificationPackage = extras
 								.getString("packageName");
@@ -182,6 +182,9 @@ public class MainActivity extends Activity{
 							sphero.setColor(0, 0, 0);
 
 						}
+						
+						
+						
 
 					}
 				}

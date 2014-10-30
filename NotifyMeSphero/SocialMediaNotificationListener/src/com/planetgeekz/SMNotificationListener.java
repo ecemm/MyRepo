@@ -20,7 +20,7 @@ public class SMNotificationListener extends NotificationListenerService{
             Log.i(TAG,"ID :" + sbn.getId() + "\t" + packageName+" posted");
 
             Intent intent = new Intent(Constants.PLANETGEEKZ_NOTIFICATION);
-            intent.putExtra("packageName", packageName);
+            intent.putExtra(Constants.INTENT_EXTRAS_PACKAGE_NAME, packageName);
             intent.putExtra(Constants.INTENT_EXTRAS_NOTIFICATION_REMOVED, false);
             sendBroadcast(intent);
 
