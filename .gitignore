@@ -12,3 +12,17 @@ NotifyMeSphero/SocialMediaNotificationListener/bin/resources.ap_
 NotifyMeSphero/SocialMediaNotificationListener/bin/SocialMediaNotificationListener.apk
 
 NotifyMeSphero/SocialMediaNotificationListener/bin/classes.dex
+
+*.dex
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/classes/com/planetgeekz/MainActivity.class
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/classes/com/planetgeekz/MainActivity$1.class
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/classes/com/planetgeekz/MainActivity$2.class
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/classes/com/planetgeekz/MainActivity$SMReceiver.class
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/resources.ap_
+
+NotifyMeSphero/SocialMediaNotificationListener/bin/SocialMediaNotificationListener.apk
